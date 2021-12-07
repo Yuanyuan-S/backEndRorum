@@ -1,0 +1,37 @@
+<h2 class="center">Forums Table</h2>
+<div class="center">
+  <a class="button" href="/forums/new">Create New</a>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% forums.forEach(forum => { %>
+    <tr>
+      <td>
+        <a href="<%= `/forums/${forum._id}` %>">
+          <%= forum.title %>
+        </a>
+      </td>
+      <td>
+        <%= forum.content %>
+      </td>
+      <td>
+        <a href="<%=`forums/${forum._id}/edit`%>">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a href="<%= `forums/${forum._id}/delete?_method=DELETE` %>" onclick="return confirm('Are you sure you want to delete this record?')" a>Delete</a>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
